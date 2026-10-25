@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>2048 - Web Claude & Antigravity Edition</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="game-container">
+    <!-- Header -->
+    <header class="game-header">
+      <div class="title-section">
+        <h1 class="logo">2048</h1>
+        <p class="subtitle">Join the tiles, get to <strong>2048!</strong></p>
+      </div>
+
+      <div class="scores-section">
+        <div class="score-card">
+          <span class="card-label">SCORE</span>
+          <span class="card-value" id="current-score">0</span>
+          <div class="score-addition" id="score-addition">+0</div>
+        </div>
+        <div class="score-card best-card">
+          <span class="card-label">BEST</span>
+          <span class="card-value" id="best-score">0</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Controls Bar -->
+    <div class="controls-bar">
+      <div class="left-controls">
+        <button id="btn-undo" class="btn btn-secondary" title="되돌리기 (U)" disabled>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 7v6h6"></path>
+            <path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13"></path>
+          </svg>
+          <span>되돌리기</span>
+        </button>
+        <button id="btn-sound" class="btn btn-icon" title="효과음 켜기/끄기 (M)">
+          <span id="sound-icon">🔊</span>
+        </button>
+      </div>
+      <button id="btn-restart" class="btn btn-primary" title="새 게임 시작 (R)">새 게임</button>
+    </div>
+
+    <!-- Board Wrapper -->
+    <div class="board-wrapper">
+      <div class="board" id="board">
+        <!-- 16 Static Background Grid Cells -->
+        <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div>
+        <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div>
+        <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div>
+        <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div>
+
+        <!-- Dynamic Tiles Layer -->
+        <div class="tiles-layer" id="tiles-layer"></div>
+      </div>
+
+      <!-- Overlays (Game Over / You Win) -->
+      <div class="overlay" id="overlay-game-over">
+        <div class="overlay-content">
+          <h2 class="overlay-title">게임 오버!</h2>
+          <p class="overlay-message">더 이상 이동할 수 있는 타일이 없습니다.</p>
+          <div class="overlay-buttons">
+            <button id="btn-gameover-undo" class="btn btn-secondary">한 수 되돌리기</button>
+            <button id="btn-gameover-restart" class="btn btn-primary">다시 도전하기</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="overlay" id="overlay-win">
+        <div class="overlay-content">
+          <div class="win-trophy">🏆</div>
+          <h2 class="overlay-title">축하합니다! 2048 달성!</h2>
+          <p class="overlay-message">전설적인 2048 타일을 완성하셨습니다.</p>
+          <div class="overlay-buttons">
+            <button id="btn-win-continue" class="btn btn-secondary">계속 플레이</button>
+            <button id="btn-win-restart" class="btn btn-primary">새 게임</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Instructions & Badges -->
+    <footer class="game-footer">
+      <p class="instruction">
+        <strong>조작 방법:</strong> 키보드 <strong>방향키</strong> 또는 <strong>W, A, S, D</strong> (모바일/태블릿은 <strong>화면 스와이프</strong>)로 타일을 밀어보세요. 같은 숫자의 타일이 만나면 하나로 합쳐집니다!
+      </p>
+      <div class="shortcuts-legend">
+        <span>단축키: <code>U</code> 되돌리기</span>
+        <span><code>R</code> 재시작</span>
+        <span><code>M</code> 음소거</span>
+      </div>
+      <div class="credits">
+        <span>Architected by <strong>Web Claude (Claude Sonnet 5.5)</strong></span>
+        <span>•</span>
+        <span>Engineered & UI by <strong>Antigravity</strong></span>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
